@@ -1,0 +1,21 @@
+{
+    "name": "rmasters/github-service-provider",
+    "description": "Pimple service provider for KnpLabs' GitHub API wrapper",
+    "require": {
+        "knplabs/github-api": "~1.2",
+        "pimple/pimple": "~3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ross Masters",
+            "email": "ross@rossmasters.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Rossible\\GitHubProvider\\": "src/"
+        }
+    }
+}
