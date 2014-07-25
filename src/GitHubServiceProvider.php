@@ -1,6 +1,6 @@
 <?php
 
-namespace Rossible\GitHubProvider;
+namespace Rossible\Provider\GitHubProvider;
 
 use Pimple\ServiceProviderInterface;
 use Pimple\Container;
@@ -27,7 +27,7 @@ class GitHubServiceProvider implements ServiceProviderInterface
         $app['github.httpclient.options'] = [];
         $app['github.httpclient'] = function ($app) {
             if ($app['github.httpclient.caching']) {
-                $client = Github\HttpClient\CachedHttpClient(
+                $client = new Github\HttpClient\CachedHttpClient(
                     $app['github.httpclient.options']
                 );
                 $client->setCache($app['github.httpclient.cache']);

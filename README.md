@@ -15,7 +15,7 @@ applications.
     $app = new Silex\Application;
     $app = new Pimple\Container;
 
-    $app->register(new Rossible\GitHubProvider\GitHubServiceProvider);
+    $app->register(new Rossible\Provider\GitHubProvider\GitHubServiceProvider);
     ```
 
 This package requires Pimple 3.x and uses the ServiceProviderInterface and
