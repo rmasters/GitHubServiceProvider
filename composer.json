@@ -1,6 +1,7 @@
 {
     "name": "rmasters/github-service-provider",
     "description": "Pimple service provider for KnpLabs' GitHub API wrapper",
+    "keywords": ["github", "pimple", "silex", "service-provider"],
     "require": {
         "knplabs/github-api": "~1.2",
         "pimple/pimple": "~3.0"

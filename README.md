@@ -7,14 +7,16 @@ applications.
 
 1.  Composer require this package:
 
-        composer require "rmasters/github-provider:~1.0"
+        composer require "rmasters/github-service-provider:~1.0"
 
 2.  Register in your application:
 
-        $app = new Silex\Application;
-        $app = new Pimple\Container;
+    ```php
+    $app = new Silex\Application;
+    $app = new Pimple\Container;
 
-        $app->register(new Rossible\GitHubProvider\GitHubServiceProvider);
+    $app->register(new Rossible\GitHubProvider\GitHubServiceProvider);
+    ```
 
 This package requires Pimple 3.x and uses the ServiceProviderInterface and
 Container interfaces/type-hints that it provides. Silex 2.0 supports this, and
@@ -36,24 +38,25 @@ github.httpclient.cache.path | When using FilesystemCache, where to store cached
 To change these, [extend or replace the service][modifying-services], for
 example:
 
-    // Update the caching variable
-    $app['github.httpclient.caching'] = false;
+```php
+// Toggle the caching variable
+$app['github.httpclient.caching'] = false;
 
-    // Use a subdirectory in the temp directory
-    $app->extend('github.httpclient.cache.path', function($path, $app) {
-        $path .= '/github-responses';
-        mkdir($path, 776);
+// Use a subdirectory in the temp directory
+$app->extend('github.httpclient.cache.path', function($path, $app) {
+    $path .= '/github-responses';
+    mkdir($path, 776);
 
-        return $path;
-    });
+    return $path;
+});
 
-    // Add extra headers
-    $app->extend('github.httpclient', function (HttpClientInterface $httpclient, $app) {
-        // Set a custom Accept header to access pre-release features
-        $httpclient->setHeaders(['Accept' => 'application/vnd.github.she-hulk-preview+json']);
+// Set a custom Accept header to access pre-release features
+$app->extend('github.httpclient', function (HttpClientInterface $httpclient, $app) {
+    $httpclient->setHeaders(['Accept' => 'application/vnd.github.she-hulk-preview+json']);
 
-        return $httpclient;
-    });
+    return $httpclient;
+});
+```
 
 ## License
 
